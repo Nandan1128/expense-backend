@@ -8,7 +8,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// ROUTES
 app.use("/auth", authRoutes);
 app.use("/expenses", expenseRoutes);
 
