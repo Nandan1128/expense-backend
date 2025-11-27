@@ -1,9 +1,14 @@
+
 const express = require("express");
 const app = express();
 const controller = require("../controllers/expenseController");
+const auth = require("../middleware/auth");
 app.use(express.json());
-app.get("/", controller.getExpenses);
-app.post("/", controller.addExpense);
-app.put("/:id", controller.updateExpense);
-app.delete("/:id", controller.deleteExpense);
+
+// Protected routes
+app.get("/", auth, controller.getExpenses);
+app.post("/", auth, controller.addExpense);
+app.put("/:id", auth, controller.updateExpense);
+app.delete("/:id", auth, controller.deleteExpense);
+
 module.exports = app;
